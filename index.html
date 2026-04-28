@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearVision Eyewear</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #e07b39;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: #e07b39;
+        }
+
+        .nav-cart {
+            position: relative;
+            text-decoration: none;
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .nav-cart .badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #e07b39;
+            color: #fff;
+            font-size: 0.65rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 85vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(224, 123, 57, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(224, 123, 57, 0.08);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 strong {
+            font-weight: 700;
+            color: #e07b39;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            color: #ccc;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .btn-primary {
+            background: #e07b39;
+            color: #fff;
+            border: 2px solid #e07b39;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: #e07b39;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #1a1a2e;
+        }
+
+        /* Glasses Icon in Hero */
+        .hero-icon {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Features */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 80px 60px;
+            background: #fff;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            text-align: center;
+            max-width: 280px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            background: #fef0e5;
+            border-radius: 50%;
+            color: #e07b39;
+        }
+
+        .feature h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        .feature p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 60px;
+            background: #f9f9f9;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #888;
+            font-size: 1.05rem;
+        }
+
+        .section-title .underline {
+            width: 60px;
+            height: 3px;
+            background: #e07b39;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+
+        .product-card:nth-child(1) .product-image { background: linear-gradient(135deg, #fef0e5, #fde2cc); }
+        .product-card:nth-child(2) .product-image { background: linear-gradient(135deg, #e5f0fe, #cce2fd); }
+        .product-card:nth-child(3) .product-image { background: linear-gradient(135deg, #e5fee8, #ccfdcc); }
+        .product-card:nth-child(4) .product-image { background: linear-gradient(135deg, #f5e5fe, #e8ccfd); }
+        .product-card:nth-child(5) .product-image { background: linear-gradient(135deg, #fefee5, #fdfdcc); }
+        .product-card:nth-child(6) .product-image { background: linear-gradient(135deg, #fee5e5, #fdcccc); }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: #e07b39;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin: 8px 0;
+            color: #1a1a2e;
+        }
+
+        .product-info .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .product-info .price .old-price {
+            text-decoration: line-through;
+            color: #aaa;
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        .product-info .btn-small {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #1a1a2e;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+
+        .product-info .btn-small:hover {
+            background: #e07b39;
+        }
+
+        /* About Section */
+        .about {
+            display: flex;
+            align-items: center;
+            padding: 100px 60px;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 450px;
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat h3 {
+            font-size: 2.2rem;
+            color: #e07b39;
+            font-weight: 700;
+        }
+
+        .stat p {
+            font-size: 0.9rem;
+            color: #999;
+            margin: 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 60px;
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .testimonials .section-title h2 {
+            color: #fff;
+        }
+
+        .testimonials .section-title p {
+            color: #999;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        .stars {
+            color: #e07b39;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card p {
+            color: #ccc;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            background: #e07b39;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .author-title {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #e07b39, #d4682a);
+            color: #fff;
+        }
+
+        .newsletter h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            width: 350px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 15px 35px;
+            border: 2px solid #fff;
+            background: transparent;
+            color: #fff;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: #fff;
+            color: #e07b39;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #aaa;
+            padding: 60px 60px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-col a:hover {
+            color: #e07b39;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #e07b39;
+            border-color: #e07b39;
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #222;
+            font-size: 0.9rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .features, .products, .testimonials, .newsletter {
+                padding: 60px 20px;
+            }
+
+            .about {
+                padding: 60px 20px;
+            }
+
+            footer {
+                padding: 40px 20px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Clear<span>Vision</span></a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#" class="nav-cart">🛒<span class="badge">3</span></a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-icon">👓</span>
+            <h1>See the World in <strong>Perfect Style</strong></h1>
+            <p>Handcrafted premium eyewear designed for comfort, durability, and timeless elegance. Find your perfect pair today.</p>
+            <a href="#products" class="btn btn-primary">Shop Collection</a>
+            <a href="#about" class="btn btn-outline">Our Story</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">🔬</div>
+            <h3>Precision Lenses</h3>
+            <p>Advanced optical technology with UV400 protection and anti-reflective coating on every pair.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🎨</div>
+            <h3>Designer Frames</h3>
+            <p>Curated collections crafted from premium acetate, titanium, and sustainable materials.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">📦</div>
+            <h3>Free Shipping</h3>
+            <p>Complimentary shipping on all orders with hassle-free 30-day returns guaranteed.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <h3>2-Year Warranty</h3>
+            <p>Every pair comes with a comprehensive warranty covering manufacturing defects.</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h2>Our Bestsellers</h2>
+            <p>Explore our most loved frames and find your signature look</p>
+            <div class="underline"></div>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">🕶️</div>
+                <div class="product-info">
+                    <span class="product-category">Sunglasses</span>
+                    <h3>The Aviator Classic</h3>
+                    <p class="price">$149 <span class="old-price">$199</span></p>
+                    <a href="#" class="btn-small">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👓</div>
+                <div class="product-info">
+                    <span class="product-category">Optical</span>
+                    <h3>The Scholar Round</h3>
+                    <p class="price">$129</p>
+                    <a href="#" class="btn-small">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🕶️</div>
+                <div class="product-info">
+                    <span class="product-category">Sunglasses</span>
+                    <h3>The Wayfarer Bold</h3>
+                    <p class="price">$169 <span class="old-price">$219</span></p>
+                    <a href="#" class="btn-small">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👓</div>
+                <div class="product-info">
+                    <span class="product-category">Optical</span>
+                    <h3>The Minimalist Wire</h3>
+                    <p class="price">$109</p>
+                    <a href="#" class="btn-small">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🕶️</div>
+                <div class="product-info">
+                    <span class="product-category">Sports</span>
+                    <h3>The Active Shield</h3>
+                    <p class="price">$189</p>
+                    <a href="#" class="btn-small">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👓</div>
+                <div class="product-info">
+                    <span class="product-category">Blue Light</span>
+                    <h3>The Digital Guard</h3>
+                    <p class="price">$99 <span class="old-price">$139</span></p>
+                    <a href="#" class="btn-small">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about">
+            <div class="about-image">👁️</div>
+            <div class="about-content">
+                <h2>Crafted with Passion Since 2015</h2>
+                <p>At ClearVision, we believe that eyewear is more than a necessity — it's an expression of who you are. Every frame is designed in-house and crafted using only the finest materials sourced from around the world.</p>
+                <p>Our team of skilled artisans combines traditional craftsmanship with modern technology to create frames that are as unique as the people who wear them.</p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>50K+</h3>
+                        <p>Happy Customers</p>
+                    </div>
+                    <div class="stat">
+                        <h3>200+</h3>
+                        <p>Frame Styles</p>
+                    </div>
+                    <div class="stat">
+                        <h3>15</h3>
+                        <p>Store Locations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="reviews">
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+            <p>Real reviews from real people who love their ClearVision frames</p>
+            <div class="underline"></div>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"The quality of these frames is incredible. I've been wearing the Aviator Classic for 6 months and they still look brand new. Best eyewear purchase I've ever made!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SK</div>
+                    <div>
+                        <div class="author-name">Sarah Kim</div>
+                        <div class="author-title">Verified Buyer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"I ordered the Digital Guard for my long screen hours and the difference is night and day. No more eye strain and headaches. The fit is incredibly comfortable."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JR</div>
+                    <div>
+                        <div class="author-name">James Rodriguez</div>
+                        <div class="author-title">Verified Buyer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"The customer service is outstanding. They helped me find the perfect frame shape for my face and even adjusted the fit remotely. Truly a premium experience."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AL</div>
+                    <div>
+                        <div class="author-name">Amara Larsson</div>
+                        <div class="author-title">Verified Buyer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="contact">
+        <h2>Stay in the Loop</h2>
+        <p>Subscribe for exclusive offers, new arrivals, and style tips delivered to your inbox.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Clear<span style="color:#e07b39">Vision</span></h4>
+                <p>Premium handcrafted eyewear for the modern individual. Designed with passion, built to last.</p>
+                <div class="social-links">
+                    <a href="#">f</a>
+                    <a href="#">in</a>
+                    <a href="#">ig</a>
+                    <a href="#">tw</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <a href="#">Sunglasses</a>
+                <a href="#">Optical Frames</a>
+                <a href="#">Blue Light Glasses</a>
+                <a href="#">Sports Eyewear</a>
+                <a href="#">Accessories</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Our Story</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+                <a href="#">Store Locator</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Shipping Info</a>
+                <a href="#">Returns & Exchanges</a>
+                <a href="#">Warranty</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ClearVision Eyewear. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
